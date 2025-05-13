@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package assistant;
+
+service VoiceAssistant {
+  rpc Converse (stream VoiceRequest) returns (stream VoiceResponse);
+}
+
+message VoiceRequest {
+  bytes audio_chunk = 1;
+}
+
+message VoiceResponse {
+  string text = 1;
+  string lang = 2;
+  string action = 3;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartVoice Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px auto;
+            max-width: 600px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            background-color: #3f51b5;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #3f51b5;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #303f9f;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+            background: #eef;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>💬 Trợ lý AI – SmartVoice</h2>
+
+    <!-- 🧠 Hỏi AI -->
+    <div class="section">
+        <h3>🧠 Hỏi AI</h3>
+        <form method="POST">
+            <input type="text" name="question" placeholder="Ví dụ: Mấy giờ rồi?" />
+            <button type="submit" name="ask">🧠 Hỏi</button>
+        </form>
+    </div>
+
+    <!-- 📢 Đọc văn bản -->
+    <div class="section">
+        <h3>📢 Đọc văn bản</h3>
+        <form method="POST">
+            <textarea name="text" rows="2" placeholder="Nhập nội dung để AI đọc...">{{ spoken_text }}</textarea>
+            <button type="submit" name="submit">📢 Đọc</button>
+        </form>
+    </div>
+
+    <!-- 🎤 Nói với AI -->
+    <div class="section">
+        <h3>🎤 Nói để AI hiểu</h3>
+        <form method="POST">
+            <button type="submit" name="speak">🎙️ Bắt đầu nói</button>
+        </form>
+
+        {% if spoken_text %}
+            <div class="result">📋 AI nhận: {{ spoken_text }}</div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
